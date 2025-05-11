@@ -3,13 +3,19 @@
 @section('content')
 <div class="container my-5">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <h1 class="mb-4">{{$post->title}}</h1>
+        
+        <div class="col-md-12 md-2">
+            <div class="row d-flex align-items-start">
+                <img class="col-md-3 md-2" src="{{ Storage::url($post->image) }}" alt="Blog Image" class="img-fluid mb-4">
+                <h1 class="col-md-9 md-2">{{$post->title}}</h1>
+            </div>
             <p class="text-muted">{{$post->published_at}} by {{$post->user->name}}.</p>
-          <!--   <img src="{{Storage::disk('public')->url($post->image)}}" alt="Blog Image" class="img-fluid mb-4"> -->
-           <!--  <img src="{{ asset('storage/posts/' . $post->image) }}" alt="Blog Image" class="img-fluid mb-4"> -->
-           <img src="{{ Storage::url($post->image) }}" alt="Blog Image" class="img-fluid mb-4">
-            <p>{{$post->body}}</p>
+            <p style="text-align: justify;">{{$post->body}}</p>
+            @if(isset($post->image))
+                <img src="{{Storage::disk('public')->url($post->image)}}" alt="Blog Image" class="img-fluid mb-4">
+            @endif
+            <p class="text-end">{{date("l jS \of F Y h:i:s A", strtotime($post->published_at ))}}</p>
+            <p class="text-end">{{$post->user->name}}</p>
         </div>
     </div>
     <!-- Section Like -->
@@ -32,14 +38,14 @@
                 
                 @auth
                 <!-- Formulaire de commentaire -->
-                <div class="card mb-4">
+                <div class="card mb-4 border bg-transparent">
                     <div class="card-body">
                         <form action="{{ route('comments.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="post_id" value="{{ $post->id }}">
                             <div class="mb-3">
                                 <label for="content" class="form-label">Laisser un commentaire</label>
-                                <textarea class="form-control @error('content') is-invalid @enderror" 
+                                <textarea class="form-control @error('content') is-invalid @enderror bg-tertiary" 
                                           id="content" name="content" rows="3" required>{{ old('content') }}</textarea>
                                 @error('content')
                                     <div class="invalid-feedback">{{ $message }}</div>
