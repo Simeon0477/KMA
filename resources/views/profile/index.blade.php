@@ -2,11 +2,11 @@
 @section('title', 'Mon Profil')
 @section('content')
 <div class="container my-5">
-    <div class="row">
+    <div class="row" >
         <div class="col-md-10 offset-md-1">
-            <div class="card mb-4">
+            <div class="card mb-4  bg-tertiary">
                 <div class="card-body">
-                    <h1 class="card-title">Profil de {{ $user->name }}</h1>
+                    <h1 class="card-title text-primary">Profil de {{ $user->name }}</h1>
                     <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
                     <p class="card-text"><strong>Membre depuis:</strong> {{ $user->created_at->format('d/m/Y') }}</p>
                     <p class="card-text"><strong>Rôle:</strong> {{ $user->isAdmin() ? 'Administrateur' : 'Utilisateur standard' }}</p>
@@ -43,15 +43,15 @@
                     @if($posts->count() > 0)
                         @foreach($posts as $post)
                             <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $post->title }}</h5>
-                                    <p class="card-text text-muted">{{ $post->published_at }}</p>
+                                <div class="card-body  bg-tertiary rounded">
+                                    <h5 class="card-title text-primary">{{ $post->title }}</h5>
+                                    <p class="card-text text-muted-primary">{{ $post->published_at }}</p>
                                     <p class="card-text">{{ Str::limit($post->body, 150) }}</p>
                                     <a href="{{ route('posts.show', $post) }}" class="btn btn-primary">Voir le post</a>
                                 </div>
-                                <div class="card-footer d-flex justify-content-between">
-                                    <span><i class="bi bi-heart-fill me-1 text-danger"></i> {{ $post->likes_count }}</span>
-                                    <span><i class="bi bi-chat-dots-fill me-1"></i> {{ $post->comments->count() }}</span>
+                                <div class="card-footer d-flex justify-content-between rounded">
+                                    <span><i class="bi bi-heart-fill me-1 text-danger"><b>like</b></i> {{ $post->likes_count }}</span>
+                                    <span><i class="bi bi-chat-dots-fill me-1 text-success"><b>Commentaires</b></i> {{ $post->comments->count() }}</span>
                                 </div>
                             </div>
                         @endforeach

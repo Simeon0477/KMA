@@ -2,6 +2,7 @@
 @section('title', 'Users List')
 @section('content')
 @include('includes.Pagination', ['items' => $users])
+<h2 class="my-4">Liste des utiliateurs</h2>
 <div class="table-responsive">
     <table class="table table-fit table-dark table-striped">
         <thead>

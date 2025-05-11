@@ -2,20 +2,44 @@
 @section('title', 'Blog Page')
 @section('content')
 
-<h2 class="my-4">Posts Récents</h2>
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+
+<section class="banner">
+  <p>
+    <span class="slogan">Kamermotion Art</span> <br> Le murmure de la culture camerounaise dans la danse des formes et des couleurs<br>
+    <button>Inscrivez vous maintenant</button>
+  </p>
+  <img id="banner_image" src="{{ Vite::asset('resources/img/cmr.png') }}"/>
+</section>
+
+<h2 class="my-4">Postes Récents</h2>
 <div class="row">
     @foreach ($posts as $post)
-    <div class="col-md-4 mb-4">
-        <div class="card">
-            <img class="card-img-top" src="{{Storage::url($post->thumbImage)}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{mb_strimwidth($post->title, 0, 20) }}</h5>
-                <p class="card-text">{{mb_strimwidth($post->body, 0, 40)}}</p>
-                <a href="{{ url("/posts/{$post->id}") }}" class="btn btn-primary">Read More
-                    &rarr;</a>
+        @if ($post->id === 0)
+            <div class="article" id="most-recent">
+              <div>
+                <img src="{{Storage::url($post->thumbImage)}}" alt="image" />
+              </div>
+              <div class="titre">
+                <div>
+                <p class="titre_article">{{mb_strimwidth($post->title, 0, 50) }}</p>
+                <p class="article_content">{{mb_strimwidth($post->body, 0, 40)}}..</p>
+                </div>
+                <a href="{{ url('/posts/{$post->id}') }}" class="btn btn-primary">Read More</a>
+              </div>
             </div>
-        </div>
-    </div>
+        @else
+            <div class="col-md-6 mb-5">
+                <div class="card bg-tertiary">
+                    <img class="card-img-top" src="{{Storage::url($post->thumbImage)}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{mb_strimwidth($post->title, 0, 50) }}</h5>
+                        <p class="card-text">{{mb_strimwidth($post->body, 0, 100)}}...</p>
+                        <a href="{{ url('/posts/{$post->id}') }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        @endif
     @endforeach
 
 </div>
