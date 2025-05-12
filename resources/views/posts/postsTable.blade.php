@@ -12,7 +12,7 @@
                 <th scope="col">Contenu</th>
                 <th scope="col">Activé</th>
                 <th scope="col">Utilisateur</th>
-                <th scope="col">Publié à</th>
+                <th scope="col">Publié le</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
