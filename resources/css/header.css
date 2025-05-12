@@ -5,6 +5,7 @@
   position: fixed;
   width: 100%;
   z-index: 100;
+  top: 0;
 }
 
 .navbar-brand{
@@ -17,7 +18,7 @@
   
 .nav-link {
   color: var(--white);
-  margin: 0 15px;
+  margin: 0;
   transition: color 0.3s ease;
   font-size : 15px;
   color : white;

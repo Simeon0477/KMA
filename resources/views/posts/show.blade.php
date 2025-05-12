@@ -29,7 +29,7 @@
                     </button>
                 </form>
                 @endauth
-                <span class="fw-bold">{{ $post->likes_count }} {{ Str::plural('like', $post->likes_count) }}</span>
+                <span class="fw-bold">{{ $post->likes_count }} {{ Str::plural('like(s)', $post->likes_count) }}</span>
             </div>
             
             <!-- Section Commentaires -->
@@ -64,11 +64,11 @@
                 <!-- Liste des commentaires -->
                 <div class="comments-list">
                     @forelse($post->comments as $comment)
-                        <div class="card mb-3">
+                        <div class="card mb-3 bg-tertiary">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between mb-2">
                                     <h5 class="card-title">{{ $comment->user->name }}</h5>
-                                    <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
+                                    <small>{{ $comment->created_at->diffForHumans() }}</small>
                                 </div>
                                 <p class="card-text">{{ $comment->content }}</p>
                                 

@@ -1,15 +1,13 @@
 @extends('layout.app')
-@section('title', 'Blog Page')
+@section('title', 'Kamermotion Art')
 @section('content')
 
-@vite(['resources/css/app.css', 'resources/js/app.js'])
-
 <section class="banner">
-  <p>
-    <span class="slogan">Kamermotion Art</span> <br> Le murmure de la culture camerounaise dans la danse des formes et des couleurs<br>
-    <button>Inscrivez vous maintenant</button>
-  </p>
-  <img id="banner_image" src="{{ Vite::asset('resources/img/cmr.png') }}"/>
+    <p>
+        <span class="slogan">Kamermotion Art</span> <br> Le murmure de la culture camerounaise dans la danse des formes et des couleurs<br>
+        <button>Inscrivez vous maintenant</button>
+    </p>
+    <img id="banner_image" src="{{ Vite::asset('resources/img/cmr.png') }}"/>
 </section>
 
 <h2 class="my-4">Postes Récents</h2>
@@ -25,7 +23,7 @@
                 <p class="titre_article">{{mb_strimwidth($post->title, 0, 50) }}</p>
                 <p class="article_content">{{mb_strimwidth($post->body, 0, 40)}}..</p>
                 </div>
-                <a href="{{ url('/posts/{$post->id}') }}" class="btn btn-primary">Read More</a>
+                <a href="{{ route('posts.show', $post) }}" class="btn btn-primary">Voir plus</a>
               </div>
             </div>
         @else
@@ -35,7 +33,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">{{mb_strimwidth($post->title, 0, 50) }}</h5>
                         <p class="card-text">{{mb_strimwidth($post->body, 0, 100)}}...</p>
-                        <a href="{{ url('/posts/{$post->id}') }}" class="btn btn-primary">Read More</a>
+                        <a href="{{ route('posts.show', $post) }}" class="btn btn-primary">Voir plus</a>
                     </div>
                 </div>
             </div>

@@ -65,11 +65,11 @@
                 <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
                     @if($comments->count() > 0)
                         @foreach($comments as $comment)
-                            <div class="card mb-3">
-                                <div class="card-body">
+                            <div class="card mb-3 bg-tertiary">
+                                <div class="card-body ">
                                     <h5 class="card-title">Sur: {{ $comment->post->title }}</h5>
                                     <p class="card-text">{{ Str::limit($comment->content, 200) }}</p>
-                                    <p class="card-text text-muted">{{ $comment->created_at->diffForHumans() }}</p>
+                                    <p class="card-text">{{ $comment->created_at->diffForHumans() }}</p>
                                     <a href="{{ route('posts.show', $comment->post) }}" class="btn btn-sm btn-primary">
                                         Voir le post
                                     </a>
@@ -86,11 +86,11 @@
                 <div class="tab-pane fade" id="likes" role="tabpanel" aria-labelledby="likes-tab">
                     @if($likes->count() > 0)
                         @foreach($likes as $like)
-                            <div class="card mb-3">
+                            <div class="card mb-3 bg-tertiary">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $like->post->title }}</h5>
                                     <p class="card-text">{{ Str::limit($like->post->body, 150) }}</p>
-                                    <p class="card-text text-muted">Liké {{ $like->created_at->diffForHumans() }}</p>
+                                    <p class="card-text">Liké {{ $like->created_at->diffForHumans() }}</p>
                                     <a href="{{ route('posts.show', $like->post) }}" class="btn btn-sm btn-primary">
                                         Voir le post
                                     </a>

@@ -7,7 +7,7 @@
     <div class="row">
         @foreach ($trashedPosts as $post)
         <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card bg-tertiary">
                 <img class="card-img-top" src="https://via.placeholder.com/300x200" alt="Card image cap">
                 <div class="card-body">
                     <h4 class="card-title">Id: {{$post->id}}</h4>
