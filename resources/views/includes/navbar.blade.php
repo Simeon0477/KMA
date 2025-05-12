@@ -28,15 +28,15 @@
                     
                     @if (Auth::user()->isAdmin())
                         <!-- Options uniquement pour les administrateurs -->
-                        <li class="nav-item">
+                        <!--li class="nav-item">
                             <a @class(['nav-link', 'active' => Route::is('posts.trash')]) href="{{route('posts.trash')}}">Corbeille</a>
-                        </li>
+                        </li-->
                         <li class="nav-item">
                             <a @class(['nav-link', 'active' => Route::is('posts.postsTable')]) href="{{route('posts.postsTable')}}">Postes</a>
                         </li>
-                        <li class="nav-item">
+                        <!--li class="nav-item">
                             <a @class(['nav-link', 'active' => Route::is('users.index')]) href="{{route('users.index')}}">Utilisateurs</a>
-                        </li>
+                        </li-->
                         <li class="nav-item">
                             <a @class(['nav-link', 'active' => Route::is('posts.create')]) href="{{route('posts.create')}}">Créer un Post</a>
                         </li>

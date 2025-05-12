@@ -2,63 +2,66 @@
 @section('title', $post->title)
 @section('content')
 <div class="container my-5">
-    <div class="row">
+    <div class="row" id="post">
+        <hr>
         <div class="col-md-12 md-2">
             <div class="row d-flex align-items-start">
-                <img class="col-md-3 md-2" src="{{ Storage::url($post->image) }}" alt="Blog Image" class="img-fluid mb-4">
+                <img class="col-md-3 md-2" src="{{ Storage::url($post->thumbImage) }}" alt="Blog Image" class="img-fluid mb-4">
                 <h1 class="col-md-9 md-2">{{$post->title}}</h1>
             </div>
             <p class="text-muted">{{$post->published_at}} by {{$post->user->name}}.</p>
-            <p style="text-align: justify;">{{$post->body}}</p>
+            <p style="text-align: justify;">{!! nl2br(e($post->body)) !!}</p>
             @if(isset($post->image))
-                <img src="{{Storage::disk('public')->url($post->image)}}" alt="Blog Image" class="img-fluid mb-4">
+                <img src="{{ Storage::url($post->image) }}" alt="Blog Image" class="img-fluid mb-4 rounded-5">
             @endif
             <p class="text-end">{{date("l jS \of F Y h:i:s A", strtotime($post->published_at ))}}</p>
             <p class="text-end">{{$post->user->name}}</p>
         </div>
+        <hr>
     </div>
+
     <!-- Section Like -->
-    <div class="d-flex align-items-center mb-4">
-                @auth
-                <form action="{{ route('posts.like', $post) }}" method="POST" class="me-2">
-                    @csrf
-                    <button type="submit" class="btn {{ Auth::user()->hasLiked($post) ? 'btn-danger' : 'btn-outline-danger' }}">
-                        <i class="bi bi-heart-fill me-1"></i> 
-                        {{ Auth::user()->hasLiked($post) ? 'Unlike' : 'Like' }}
-                    </button>
-                </form>
-                @endauth
-                <span class="fw-bold">{{ $post->likes_count }} {{ Str::plural('like(s)', $post->likes_count) }}</span>
-            </div>
+    <div class="d-flex align-items-center mb-4 float-end">
+        @auth
+        <form action="{{ route('posts.like', $post) }}" method="POST" class="me-2">
+            @csrf
+            <button type="submit" class="btn {{ Auth::user()->hasLiked($post) ? 'btn-danger' : 'btn-outline-danger' }}">
+                <i class="bi bi-heart-fill me-1"></i> 
+                {{ Auth::user()->hasLiked($post) ? 'Unlike' : 'Like' }}
+            </button>
+        </form>
+        @endauth
+        <span class="fw-bold">{{ $post->likes_count }} {{ Str::plural('like(s)', $post->likes_count) }}</span>
+    </div>
             
-            <!-- Section Commentaires -->
-            <div class="comments-section mt-5">
-                <h3 class="mb-4">Commentaires ({{ $post->comments->count() }})</h3>
-                
-                @auth
-                <!-- Formulaire de commentaire -->
-                <div class="card mb-4 border bg-transparent">
-                    <div class="card-body">
-                        <form action="{{ route('comments.store') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="post_id" value="{{ $post->id }}">
-                            <div class="mb-3">
-                                <label for="content" class="form-label">Laisser un commentaire</label>
-                                <textarea class="form-control @error('content') is-invalid @enderror bg-tertiary" 
-                                          id="content" name="content" rows="3" required>{{ old('content') }}</textarea>
-                                @error('content')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-primary">Publier</button>
-                        </form>
+    <!-- Section Commentaires -->
+    <div class="comments-section mt-5">
+        <h3 class="mb-4">Commentaires ({{ $post->comments->count() }})</h3>
+        
+        @auth
+        <!-- Formulaire de commentaire -->
+        <div class="card mb-4 border bg-transparent">
+            <div class="card-body">
+                <form action="{{ route('comments.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Laisser un commentaire</label>
+                        <textarea class="form-control @error('content') is-invalid @enderror bg-tertiary" 
+                                  id="content" name="content" rows="3" required>{{ old('content') }}</textarea>
+                        @error('content')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                </div>
-                @else
-                <div class="alert alert-info">
-                    <a href="{{ route('login') }}">Connectez-vous</a> pour laisser un commentaire.
-                </div>
-                @endauth
+                    <button type="submit" class="btn btn-primary float-end">Publier</button>
+                </form>
+            </div>
+        </div>
+        @else
+        <div class="alert alert-info">
+            <a href="{{ route('login') }}">Connectez-vous</a> pour laisser un commentaire.
+        </div>
+        @endauth
                 
                 <!-- Liste des commentaires -->
                 <div class="comments-list">
@@ -77,7 +80,7 @@
                                         <form action="{{ route('comments.destroy', $comment) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" 
+                                            <button type="submit" class="btn btn-sm btn-danger float-end" 
                                                     onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire?')">
                                                 Supprimer
                                             </button>

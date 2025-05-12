@@ -36,7 +36,7 @@
                     <div class="col-12">
                         <label for="photoUpload" class="form-label">Image de couverture</label>
                         <input type="file" class="form-control bg-tertiary" name="thumbImage" id="photoUpload"
-                            placeholder="Upload imgae" value="{{old('thumbImage')}}" />
+                            placeholder="Upload imgae" value="{{old('thumbImage')}}" required/>
                     </div>
                     <div class="col-12">
                         <label for="body" class="form-label">Contenu</label>
