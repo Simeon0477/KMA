@@ -3,7 +3,6 @@
 @section('content')
 <div class="container my-5">
     <div class="row">
-        
         <div class="col-md-12 md-2">
             <div class="row d-flex align-items-start">
                 <img class="col-md-3 md-2" src="{{ Storage::url($post->image) }}" alt="Blog Image" class="img-fluid mb-4">

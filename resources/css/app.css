@@ -63,12 +63,13 @@ body.mb-5.pb-3 {
 }
 
 .card-title{
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
 }
 
 .card-text{
     font-size: 16px;
+    text-align: justify;
 }
 
 .banner p{
@@ -124,16 +125,25 @@ body.mb-5.pb-3 {
 }
 
 #most-recent{
+  width: 100%;
   grid-column: span 3;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   background: transparent;
+  margin: 10px 0 40px 0;
+}
+
+.accordion-header button{
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
 }
 
 #most-recent .titre{
-  width: 50%;
+  width: 48%;
+  margin-left: 30px;
 }
 
 #most-recent .titre_article{
@@ -162,6 +172,30 @@ body.mb-5.pb-3 {
   height: auto;
   margin: 0;
 }
+
+.add2{
+    background-color: var(--dark-blue);
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    transition: 0.2s;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration : none;
+  }
+  
+  .add2:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.2s;
+  }
+
+  .achat{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
 @media screen and (max-width: 1090px){
   .recents{
@@ -241,6 +275,18 @@ body.mb-5.pb-3 {
 }
 
 @media screen and (max-width: 800px){
+  .card-title{
+    font-size: 14px;
+  }
+    
+  .card-text{
+    font-size: 12px;
+  }
+
+  .text-primary{
+    font-size: 18px;
+  }
+
   #banner_image{
     order: 1;
   }

@@ -47,11 +47,11 @@
                                     <h5 class="card-title text-primary">{{ $post->title }}</h5>
                                     <p class="card-text text-muted-primary">{{ $post->published_at }}</p>
                                     <p class="card-text">{{ Str::limit($post->body, 150) }}</p>
-                                    <a href="{{ route('posts.show', $post) }}" class="btn btn-primary">Voir le post</a>
+                                    <a href="{{ route('posts.show', $post) }}" class="btn btn-primary float-end">Voir le post</a>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between rounded">
-                                    <span><i class="bi bi-heart-fill me-1 text-danger"><b>like</b></i> {{ $post->likes_count }}</span>
-                                    <span><i class="bi bi-chat-dots-fill me-1 text-success"><b>Commentaires</b></i> {{ $post->comments->count() }}</span>
+                                    <span><i class="bi bi-heart-fill me-1 text-danger"><b>like(s)</b></i> {{ $post->likes_count }}</span>
+                                    <span><i class="bi bi-chat-dots-fill me-1 text-success"><b>Commentaire(s)</b></i> {{ $post->comments->count() }}</span>
                                 </div>
                             </div>
                         @endforeach
@@ -62,17 +62,23 @@
                 </div>
 
                 <!-- Onglet des commentaires -->
-                <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                <div class="tab-pane fade accordion" id="comments" role="tabpanel" aria-labelledby="comments-tab">
                     @if($comments->count() > 0)
-                        @foreach($comments as $comment)
-                            <div class="card mb-3 bg-tertiary">
-                                <div class="card-body ">
-                                    <h5 class="card-title">Sur: {{ $comment->post->title }}</h5>
-                                    <p class="card-text">{{ Str::limit($comment->content, 200) }}</p>
-                                    <p class="card-text">{{ $comment->created_at->diffForHumans() }}</p>
-                                    <a href="{{ route('posts.show', $comment->post) }}" class="btn btn-sm btn-primary">
-                                        Voir le post
-                                    </a>
+                        @foreach($comments as $key => $comment)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{ $key }}">
+                                    <button class="accordion-button @if($key != 0) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $key }}" aria-expanded="@if($key == 0) true @else false @endif" aria-controls="collapse{{ $key }}">
+                                        Sur: {{ $comment->post->title }}
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ $key }}" class="accordion-collapse collapse @if($key == 0) show @endif" aria-labelledby="heading{{ $key }}" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body bg-tertiary">
+                                        <p class="card-text">{{ Str::limit($comment->content, 200) }}</p>
+                                        <p class="card-text">{{ $comment->created_at->diffForHumans() }}</p>
+                                        <a href="{{ route('posts.show', $comment->post) }}" class="btn btn-sm btn-primary">
+                                            Voir le post
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
@@ -83,17 +89,23 @@
                 </div>
 
                 <!-- Onglet des likes -->
-                <div class="tab-pane fade" id="likes" role="tabpanel" aria-labelledby="likes-tab">
+                <div class="tab-pane fade accordion" id="likes" role="tabpanel" aria-labelledby="likes-tab">
                     @if($likes->count() > 0)
-                        @foreach($likes as $like)
-                            <div class="card mb-3 bg-tertiary">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $like->post->title }}</h5>
-                                    <p class="card-text">{{ Str::limit($like->post->body, 150) }}</p>
-                                    <p class="card-text">Liké {{ $like->created_at->diffForHumans() }}</p>
-                                    <a href="{{ route('posts.show', $like->post) }}" class="btn btn-sm btn-primary">
-                                        Voir le post
-                                    </a>
+                        @foreach($likes as $key => $like)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{ $key }}">
+                                    <button class="accordion-button @if($key != 0) collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $key }}" aria-expanded="@if($key == 0) true @else false @endif" aria-controls="collapse{{ $key }}">
+                                        {{ $like->post->title }}
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ $key }}" class="accordion-collapse collapse @if($key == 0) show @endif" aria-labelledby="heading{{ $key }}" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body bg-tertiary">
+                                        <p class="card-text">{{ Str::limit($like->post->body, 150) }}</p>
+                                        <p class="card-text">Liké {{ $like->created_at->diffForHumans() }}</p>
+                                        <a href="{{ route('posts.show', $like->post) }}" class="btn btn-sm btn-primary">
+                                            Voir le post
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

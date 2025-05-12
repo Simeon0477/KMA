@@ -25,3 +25,7 @@
   font-weight : 600;
   text-decoration : none;
 }
+
+.nav-link:hover{
+  color: white;
+}
