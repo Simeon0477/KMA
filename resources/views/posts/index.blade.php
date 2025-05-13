@@ -5,7 +5,7 @@
 <section class="banner">
     <p>
         <span class="slogan">Kamermotion Art</span> <br> Le murmure de la culture camerounaise dans la danse des formes et des couleurs<br>
-        <button>Inscrivez vous maintenant</button>
+        <button onclick="window.location.href='{{route('register')}}'">Inscrivez vous maintenant</button>
     </p>
     <img id="banner_image" src="{{ Vite::asset('resources/img/image-1.jpg') }}"/>
 </section>
