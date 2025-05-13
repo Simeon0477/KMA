@@ -9,6 +9,7 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/log.css',
                 'resources/css/footer.css',
                 'resources/css/header.css',
                 'resources/css/root.css',

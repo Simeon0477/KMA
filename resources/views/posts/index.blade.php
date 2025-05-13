@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Kamermotion Art')
+@section('title', 'KamerMotion Art')
 @section('content')
 
 <section class="banner">
@@ -7,7 +7,7 @@
         <span class="slogan">Kamermotion Art</span> <br> Le murmure de la culture camerounaise dans la danse des formes et des couleurs<br>
         <button>Inscrivez vous maintenant</button>
     </p>
-    <img id="banner_image" src="{{ Vite::asset('resources/img/cmr.png') }}"/>
+    <img id="banner_image" src="{{ Vite::asset('resources/img/image-1.jpg') }}"/>
 </section>
 
 <h2 class="my-4">Postes Récents</h2>
