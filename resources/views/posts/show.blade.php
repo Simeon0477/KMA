@@ -12,7 +12,7 @@
             <p class="text-muted">{{$post->published_at}} by {{$post->user->name}}.</p>
             <p style="text-align: justify;">{!! nl2br(e($post->body)) !!}</p>
             @if(isset($post->image))
-                <img src="{{ Storage::url($post->image) }}" alt="Blog Image" class="img-fluid mb-4 rounded-5">
+                <img src="{{ Storage::url($post->image) }}" alt="Blog Image" class="img-fluid mb-4 rounded-5 post-img">
             @endif
             <p class="text-end">{{date("l jS \of F Y h:i:s A", strtotime($post->published_at ))}}</p>
             <p class="text-end">{{$post->user->name}}</p>

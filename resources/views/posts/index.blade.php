@@ -45,7 +45,7 @@
               </div>
               <div class="col-8">  <!-- Utilisation de col-8 pour le corps -->
                 <div class="card-body">
-                  <h5 class="card-title text-primary">{{mb_strimwidth($post->title, 0, 50) }}</h5>
+                  <h5 class="card-title text-primary">{{mb_strimwidth($post->title, 0, 200) }}</h5>
                   <p class="card-text">{{mb_strimwidth($post->body, 0, 100)}}...</p>
                   <a href="{{ route('posts.show', $post) }}" class="btn btn-primary float-end" style="margin-bottom:10px;">Voir plus</a>
                 </div>

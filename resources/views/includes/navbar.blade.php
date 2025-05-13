@@ -38,7 +38,7 @@
                             <a @class(['nav-link', 'active' => Route::is('users.index')]) href="{{route('users.index')}}">Utilisateurs</a>
                         </li-->
                         <li class="nav-item">
-                            <a @class(['nav-link', 'active' => Route::is('posts.create')]) href="{{route('posts.create')}}">Créer un Post</a>
+                            <a @class(['nav-link', 'active' => Route::is('posts.create')]) href="{{route('posts.create')}}">Créer un Poste</a>
                         </li>
                     @endif
                     
