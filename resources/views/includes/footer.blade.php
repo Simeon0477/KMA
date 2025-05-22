@@ -5,8 +5,8 @@
         <h2  class="text-primary">Liens Rapides</h2>
         <ul type="circle">
           <li><a href="">A propos de nous</a></li>
-          <li><a href="{{route('posts.postsTable')}}">Postes</a></li>
-          <li><a href="{{route('posts.create')}}">Ajouter un poste</a></li>
+          <li><a href="{{route('posts.postsTable')}}">Posts</a></li>
+          <li><a href="{{route('posts.create')}}">Ajouter un post</a></li>
           <li><a href="{{route('register')}}">S'inscrire</a></li>
         </ul>
       </div>
@@ -23,8 +23,8 @@
           </div>
           <div class="network">
               <a href="https://www.facebook.com/share/18UEPiARXo/" target="blank"><img src="{{ Vite::asset('resources/ico/ico (1).png') }}"></a>
-              <a href=""><img src="{{ Vite::asset('resources/ico/ico (2).png') }}"></a>
-              <a href=""><img src="{{ Vite::asset('resources/ico/ico (3).png') }}"></a>
+              <a href="https://wa.me/+237620609746" target="blank"><img src="{{ Vite::asset('resources/ico/ico (2).png') }}"></a>
+              <a href="https://www.instagram.com/simeon_nhm?igsh=MTMxcW1kcmI2MXVuMg==" target="blank"><img src="{{ Vite::asset('resources/ico/ico (3).png') }}"></a>
           </div>
       </div>
     </div>

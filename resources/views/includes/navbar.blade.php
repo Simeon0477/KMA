@@ -32,13 +32,13 @@
                             <a @class(['nav-link', 'active' => Route::is('posts.trash')]) href="{{route('posts.trash')}}">Corbeille</a>
                         </li-->
                         <li class="nav-item">
-                            <a @class(['nav-link', 'active' => Route::is('posts.postsTable')]) href="{{route('posts.postsTable')}}">Postes</a>
+                            <a @class(['nav-link', 'active' => Route::is('posts.postsTable')]) href="{{route('posts.postsTable')}}">Posts</a>
                         </li>
                         <li class="nav-item">
                             <a @class(['nav-link', 'active' => Route::is('users.index')]) href="{{route('users.index')}}">Utilisateurs</a>
                         </li>
                         <li class="nav-item">
-                            <a @class(['nav-link', 'active' => Route::is('posts.create')]) href="{{route('posts.create')}}">Créer un Poste</a>
+                            <a @class(['nav-link', 'active' => Route::is('posts.create')]) href="{{route('posts.create')}}">Créer un Post</a>
                         </li>
                     @endif
                     

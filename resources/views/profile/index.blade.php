@@ -14,27 +14,46 @@
                 </div>
             </div>
 
-            <!-- Onglets pour naviguer entre les différentes sections -->
-            <ul class="nav nav-tabs mb-4" id="profileTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" 
-                            type="button" role="tab" aria-controls="posts" aria-selected="true">
-                        Mes Posts
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments" 
-                            type="button" role="tab" aria-controls="comments" aria-selected="false">
-                        Mes Commentaires
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="likes-tab" data-bs-toggle="tab" data-bs-target="#likes" 
-                            type="button" role="tab" aria-controls="likes" aria-selected="false">
-                        Mes Likes
-                    </button>
-                </li>
-            </ul>
+            @if (Auth::check())
+                @if (Auth::user()->isAdmin())
+                    <!-- Onglets pour naviguer entre les différentes sections -->
+                    <ul class="nav nav-tabs mb-4" id="profileTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" 
+                                    type="button" role="tab" aria-controls="posts" aria-selected="true">
+                                Mes Posts
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments" 
+                                    type="button" role="tab" aria-controls="comments" aria-selected="false">
+                                Mes Commentaires
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="likes-tab" data-bs-toggle="tab" data-bs-target="#likes" 
+                                    type="button" role="tab" aria-controls="likes" aria-selected="false">
+                                Mes Likes
+                            </button>
+                        </li>
+                    </ul>
+                @else
+                    <ul class="nav nav-tabs mb-4" id="profileTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments" 
+                                    type="button" role="tab" aria-controls="comments" aria-selected="true">
+                                Mes Commentaires
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="likes-tab" data-bs-toggle="tab" data-bs-target="#likes" 
+                                    type="button" role="tab" aria-controls="likes" aria-selected="false">
+                                Mes Likes
+                            </button>
+                        </li>
+                    </ul>
+                @endif
+            @endif
 
             <!-- Contenu des onglets -->
             <div class="tab-content" id="profileTabsContent">
@@ -56,7 +75,7 @@
                             </div>
                         @endforeach
                         {{ $posts->links() }}
-                    @else
+                    @elseif(Auth::user()->isAdmin())
                         <div class="alert alert-info">Vous n'avez pas encore créé de posts.</div>
                     @endif
                 </div>

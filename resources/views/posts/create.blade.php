@@ -46,16 +46,16 @@
                             <label for="floatingTextarea2"></label>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 hidden">
                         <label for="enabledSelect" class="form-label">Activé</label>
                         <select id="enabledSelect" name="enabled" class="form-select bg-tertiary" required>
                             {{old('enabled')}}
-                            <option value="">Choisir 0 ou 1</option>
+                            <option value="1" selected>Choisir 0 ou 1</option>
                             <option value="0">0</option>
                             <option value="1">1</option>
                         </select>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12" style="width: 100%;">
                         <input type="submit" value="Ajouter le poste" class="col-12 btn btn-primary" />
                     </div>
                 </div>
